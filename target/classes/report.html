@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <style>
+
+     table,
+    th,
+    td {
+
+       font-family:'Century Gothic',CenturyGothic,AppleGothic,sans-serif;
+           text-align: center;
+           border: 1px solid black;
+           border-collapse: collapse;
+           white-space: nowrap;
+
+    }
+
+    </style>
+</head>
+<body>
+
+
+<table>
+
+
+
+    <tr style="background-color:#b6cff2; font-size:14px; padding: 9px 8px 9px 8px;">
+        <th style="width:70px">Product Type </th>
+        <th style="width:200px">Product Owner </th>
+        <th style="width:190px">Total Messeges<br/> [Clean + Hits]</th>
+        <th style="width:170px">Clean Transaction</th>
+        <th style="width:200px">Transaction with Hits<br/>[User + DERAP]</th>
+        <th style="width:170px">DERAP Queue</th>
+
+        <th style="width:170px">User Queue<br/>[X] + [Y]</th>
+        <th style="width:200px">Fresh Cases<br/>[X]</th>
+        <th style="width:190px">Repeated Transactions<br/>[Y]=[a]+[b]+[c]+[d]+[e]+[f]</th>
+        <th style="width:170px">Unknown reasons <br/>[a]</th>
+        <th style="width:170px">Change in Party <br/>[b]</th>
+        <th style="width:170px">Change in EDMS <br/>[c]</th>
+        <th style="width:170px">Change in Amount<br/>[d]</th>
+        <th style="width:170px">Change in Expiry Date<br/> [e]</th>
+        <th style="width:170px">Change in Value Date<br/> [f]</th>
+
+    </tr>
+
+    <div th:each="srDto : ${ mainDto.getSummaryHtmlMaptoset() }">
+        <tr style="font-size:12px;">
+
+            <td th:text="${mainDto.isNullOrEmpty(mainDto.getSummaryHtmlMap().get(srDto).getUnit())}">---</td>
+            <td th:text="${mainDto.isNullOrEmpty(mainDto.getSummaryHtmlMap().get(srDto).getProductOwner())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getTotalMessages())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getNoHits())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getTransactionWithHits())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getReapplyTrns())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getUserTrns())}">---</td>
+
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getFirstTime())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getRepeatedTrns())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInMessage())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInParty())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInEdms())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInAmount())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInExpiryDate())}">---</td>
+
+            <td th:text="${mainDto.longToString(mainDto.getSummaryHtmlMap().get(srDto).getChangeInValueDate())}">---</td>
+
+        </tr>
+
+    </div>
+
+</table>
+
+<p></p>
+<p></p>
+
+
+
+
+
+</body>
+</html>
